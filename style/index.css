@@ -1,0 +1,26 @@
+@import "./default-design.css";
+
+h1 {
+  color: hsl(var(--clr-deep-blue));
+}
+
+nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2vw;
+  padding: 4vw;
+}
+
+article {
+  background-color: hsla(var(--clr-sky-blue), 0.145);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid hsl(var(--clr-light-grey));
+  color: black;
+}
+
+article h2 {
+  text-align: center;
+  color: hsl(var(--clr-deep-blue));
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,7 @@
+document max-width: othersie the article boxes in index.html become too wide 
+and the back-arrow of the articles goes too much on the left
+
+Interactive prompt:
+using the output HTML tag or with WASM
+
+specify if for the example you use a woman or man

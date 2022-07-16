@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The use of std::static_cast() in C++" />
+    <meta name="author" content="Alessandro Tambellini" />
+    <title>post and pre increment</title>
+    <link rel="stylesheet" href="../style/default-design.css" />
+  </head>
+  <body>
+    <header>
+      <div class="back-arrow">
+        <a href="../index.html">&larrhk;</a>
+      </div>
+    </header>
+    <article class="reading-optimized">
+      <figure class="code-container">
+        <code>
+          #include &lt;iostream&gt;<br />
+          usign namespace std;<br />
+          <br />
+          int main () {
+        </code>
+        <div class="indented-code">
+          <code>
+            int value = 5;<br />
+            cout &lt;&lt; value++;
+            <span class="code-comment"
+              >// 5: it first prints the value, then increases the value</span
+            ><br />
+            cout &lt;&lt; ++value;
+            <span class="code-comment"
+              >// 7: it first increases the value, then prints it</span
+            ><br />
+            <br />
+            return 0;
+          </code>
+        </div>
+        <code>}</code>
+      </figure>
+
+      <figure class="code-container">
+        <code>
+          #include &lt;iostream&gt;<br />
+          usign namespace std;<br />
+          <br />
+          int main () {
+        </code>
+        <div class="indented-code">
+          <code>
+            for (int i = 0; i &lt; 10; ++i) {<br />
+            <span class="indented-code"
+              >cout &lt;&lt; i++ &lt;&lt; endl;
+              <span class="code-comment">// 0, 2, 4, 6, 8</span></span
+            ><br />
+            }<br />
+            <br />
+            for (int i = 0; i &lt; 10; i++) {<br />
+            <span class="indented-code"
+              >cout &lt;&lt; ++i &lt;&lt; endl;
+              <span class="code-comment">// 1, 3, 5, 7, 9</span></span
+            ><br />
+            }<br />
+            <br />
+            for (int i = 0; i &lt; 10; ++i) {<br />
+            <span class="indented-code"
+              >cout &lt;&lt; i++ &lt;&lt; endl;
+              <span class="code-comment">// 0, 2, 4, 6, 8</span></span
+            ><br />
+            }<br />
+            <br />
+            return 0;
+          </code>
+        </div>
+        <code>}</code>
+      </figure>
+      <p>
+        I think these commented examples are clear and there is no need for
+        extra words.
+      </p>
+    </article>
+  </body>
+</html>

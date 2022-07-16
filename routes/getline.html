@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The use of std::getline() in C++" />
+    <meta name="author" content="Alessandro Tambellini" />
+    <title>getline</title>
+    <link rel="stylesheet" href="../style/default-design.css" />
+  </head>
+  <body>
+    <header>
+      <div class="back-arrow">
+        <a href="../index.html">&larrhk;</a>
+      </div>
+    </header>
+
+    <!-- SPECIFY THAT FOR THE EXAMPLE YOU ARE GOING TO USE SHE FOR THE USER -->
+
+    <article class="reading-optimized">
+      <p>Let's take an example:</p>
+
+      <figure class="code-container">
+        <code>
+          #include &lt;iostream&gt;<br />
+          <br />
+          int main () {
+        </code>
+        <div class="indented-code">
+          <code>
+            std::cout &lt;&lt; "Enter your age: ";<br />
+            int age;<br />
+            std::cin &gt;&gt; age;<br />
+            std::cout &lt;&lt; "Your age is: " &lt;&lt; age &lt;&lt;
+            std::endl;<br />
+            <br />
+            std::string fullName;<br />
+            std::cout &lt;&lt; "Enter your full name: ";<br />
+            std::getline(std::cin, fullName);<br />
+            std::cout &lt;&lt; "Your full name is: " &lt;&lt; fullName;<br />
+            <br />
+            return 0;
+          </code>
+        </div>
+        <code>}</code>
+      </figure>
+
+      <p>
+        Here we are asking the user the age and the full name. I know you
+        usually ask for the name first and then for the age, but for the
+        explanation is more convenient the order above.<br />
+        <br />
+        If this program is executed, these are the execution steps:
+        <figure class="command-prompt">
+          <samp>
+            <span class="program-directory">C:\Users\User\repos\getline></span>
+            <kbd class="user-input file-execution">.\rooster.exe</kbd><br />
+            Enter your age: <kbd class="user-input">23</kbd><br />
+            Your age is: 23 <br />
+            Enter your full name: Your full name is: <br />
+            <span class="program-directory">C:\Users\User\repos\getline></span>
+            █
+          </samp>
+        </figure>
+
+        Exactly, the user will not be able to type her name. Well, in a certain
+        sense she typed it.
+        <br />
+        We ask for a full name, so there are spaces in between, and thus we use
+        the getline function of the standard library, otherwise only the first
+        name is taken. But, after she type the age, she also type the
+        <kbd class="keyboard-key">Enter</kbd> key and in doing so a new line is
+        created and this is the line that the getline function takes!
+      </p>
+      <br />
+      <p>
+        To avoid this problem you need the
+        <code class="code-line">cin.ignore()</code> function:
+
+        <figure class="code-container">
+          <code>
+            #include &lt;iostream&gt;<br />
+            <br />
+            int main () {
+          </code>
+          <div class="indented-code">
+            <code>
+              std::cout &lt;&lt; "Enter your age: ";<br />
+              int age;<br />
+              std::cin &gt;&gt; age;<br />
+              std::cout &lt;&lt; "Your age is: " &lt;&lt; age &lt;&lt;
+              std::endl;<br />
+              <br />
+              <span class="important-code-line">std::cin.ignore();</span><br />
+              std::string fullName;<br />
+              std::cout &lt;&lt; "Enter your full name: ";<br />
+              std::getline(std::cin, fullName);<br />
+              std::cout &lt;&lt; "Your full name is: " &lt;&lt; fullName;<br />
+              <br />
+              return 0;
+            </code>
+          </div>
+          <code>}</code>
+        </figure>
+        In doing so the line created by the
+        <kbd class="keyboard-key">Enter</kbd> key is ignored.<br />
+
+        These are the right new execution steps:
+        <figure class="command-prompt">
+          <samp>
+            <span class="program-directory">C:\Users\User\repos\getline></span>
+            <kbd class="user-input file-execution">.\rooster.exe</kbd><br />
+            Enter your age: <kbd class="user-input">23</kbd><br />
+            Your age is: 23 <br />
+            Enter your full name: Anita Smith<br />
+            Your full name is: Anita Smith<br />
+            <span class="program-directory">C:\Users\User\repos\getline></span>
+            █
+          </samp>
+        </figure>
+      </p>
+    </article>
+  </body>
+</html>

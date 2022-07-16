@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The use of std::static_cast() in C++" />
+    <meta name="author" content="Alessandro Tambellini" />
+    <title>C++ mistakes</title>
+    <link rel="stylesheet" href="../style/default-design.css" />
+  </head>
+  <body>
+    <header>
+      <div class="back-arrow">
+        <a href="../index.html">&larrhk;</a>
+      </div>
+    </header>
+
+    <!-- SPECIFY THAT FOR THE EXAMPLE YOU ARE GOING TO USE SHE FOR THE USER -->
+
+    <article class="reading-optimized">
+      <p>You wrote the following code to output your multiplication:</p>
+      <figure class="code-container">
+        <code>
+          #include &lt;iostream&gt;<br />
+          <br />
+          int main () {
+        </code>
+        <div class="indented-code">
+          <code>
+            int myNum = 2147483647;
+            <span class="code-comment">// 2<sup>31</sup>-1</span><br />
+            long long int myProduct = myNum * 2;<br />
+            std::cout &lt;&lt; myProduct;<br />
+            <br />
+            return 0;
+          </code>
+        </div>
+        <code>}</code>
+      </figure>
+
+      <p>
+        You are a Pro Coder indeed you know that the greater integer you can
+        represent with the default <code class="code-line">int</code> is
+        2<sup>31</sup>-1, so when you multiply by 2 you set the type of the
+        variable as <code class="code-line">long long int</code>.<br />
+        Finally you execute the program and the result is:
+      </p>
+
+      <figure class="command-prompt">
+        <samp>
+          <span class="program-directory"
+            >C:\Users\User\repos\static_cast></span
+          >
+          <kbd class="user-input file-execution">.\rooster.exe</kbd><br />
+          -2<br />
+          <span class="program-directory"
+            >C:\Users\User\repos\static_cast></span
+          >
+          █
+        </samp>
+      </figure>
+
+      This is a problem of type conversion. Even if you use the
+      <code class="code-line">auto</code> type instead of
+      <code class="code-line">long long int</code> it doesn't change something
+      because you're setting the type of the new variable, not of the operation
+      itself. To solve the issue you have 3 options: setting myNum to
+      <code class="code-line">long long int</code>, setting myNum to
+      <code class="code-line">unsigned int</code> or using
+      <a href="https://en.cppreference.com/w/cpp/language/static_cast"
+        ><code class="code-line">static_cast&lt;&gt;</code></a
+      >
+
+      <figure class="code-container">
+        <code>
+          #include &lt;iostream&gt;<br />
+          <br />
+          int main () {
+        </code>
+        <div class="indented-code">
+          <code>
+            int myNum = 2147483647;
+            <span class="code-comment">// 2<sup>31</sup>-1</span><br />
+            long long int myProduct = static_cast&lt;long long int&gt;(myNum) *
+            2;<br />
+            std::cout &lt;&lt; myProduct;<br />
+            <br />
+            return 0;
+          </code>
+        </div>
+        <code>}</code>
+      </figure>
+
+      <p>The new execution gives the right result:</p>
+      <figure class="command-prompt">
+        <samp>
+          <span class="program-directory"
+            >C:\Users\User\repos\static_cast></span
+          >
+          <kbd class="user-input file-execution">.\rooster.exe</kbd><br />
+          4294967294<br />
+          <span class="program-directory"
+            >C:\Users\User\repos\static_cast></span
+          >
+          █
+        </samp>
+      </figure>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+:root {
+  --clr-deep-blue: 206, 94%, 27%;
+  --clr-sky-blue: 206, 95%, 37%;
+  --clr-light-grey: 0, 0%, 82%;
+
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
+  --fs-500: 1rem;
+  --fs-400: 0.9375rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  --ff-sans-cond: "Barlow Condensed", sans-serif;
+  --ff-sans-normal: "Barlow", sans-serif;
+}
+
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem;
+  }
+}
+
+@media (min-width: 45em) {
+  :root {
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-400);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.fs-900 {
+  font-size: var(--fs-900);
+}
+.fs-800 {
+  font-size: var(--fs-800);
+}
+.fs-700 {
+  font-size: var(--fs-700);
+}
+.fs-600 {
+  font-size: var(--fs-600);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-300 {
+  font-size: var(--fs-300);
+}
+.fs-200 {
+  font-size: var(--fs-200);
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+  line-height: 1.1;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.ff-sans-cond {
+  font-family: var(--ff-sans-cond);
+}
+.ff-sans-normal {
+  font-family: var(--ff-sans-normal);
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+li {
+  list-style-position: inside;
+  line-height: 1.7;
+}
+
+sup {
+  line-height: 0; /* otherwise the line-height of the paragraph is increased */
+}
+
+.keyboard-key {
+  background-color: hsl(0, 0%, 93%);
+  border-radius: 3px;
+  border: 1px solid hsl(0, 0%, 71%);
+  box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.2),
+    0 2px 0 0 hsla(0, 0%, 100%, 0.7) inset;
+  color: hsl(0, 0%, 20%);
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+/* Article */
+
+.back-arrow {
+  background-color: hsla(var(--clr-sky-blue), 0.145);
+  height: 60px;
+  aspect-ratio: 1;
+  border: 2px solid hsl(var(--clr-light-grey));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  margin: 2vw;
+}
+
+.back-arrow a {
+  font-size: var(--fs-700);
+  color: hsl(var(--clr-deep-blue));
+}
+
+.reading-optimized {
+  max-width: 60ch;
+  margin-inline: auto;
+  line-height: 1.5em;
+}
+
+.code-container {
+  background-color: hsl(var(--clr-light-grey), 0.3);
+  padding: var(--fs-400);
+  margin: 2vh auto;
+}
+
+.indented-code {
+  padding-left: 2ch;
+}
+
+.code-line {
+  background-color: hsl(var(--clr-light-grey), 0.3);
+  padding-inline: 0.5em;
+}
+
+.important-code-line {
+  background-color: hsl(var(--clr-deep-blue), 0.3);
+}
+
+.code-comment {
+  color: hsla(0, 0%, 0%, 0.5);
+}
+
+.command-prompt {
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 100%);
+  margin: 1.5vh auto;
+}
+
+samp {
+  font-family: "Courier";
+}
+
+samp .file-execution {
+  color: hsl(60, 100%, 50%);
+}
+
+/* ==== HOW TO USE VARIABLES ==== */
+.flow > *:where(:not(:last-child)) {
+  /* :where doesn't add specifity to the last-child. Thus its properties can be overridden easily */
+  margin-bottom: var(--flow-space, 1rem);
+}
+
+.flow--space-small {
+  --flow-space: 0.75rem;
+}
+/* ============================== */
